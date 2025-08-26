@@ -242,7 +242,7 @@ static int cifscreds_pam_add(pam_handle_t *ph, const char *user, const char *pas
 					   currentaddress, user);
 			}
 			if (keyctl(KEYCTL_SETPERM, key, CIFS_KEY_PERMS) < 0) {
-				pam_syslog(ph, LOG_ERR,"error: Setting permissons "
+				pam_syslog(ph, LOG_ERR,"error: Setting permissions "
 					"on key, attempt to delete...");
 
 				if (keyctl(KEYCTL_UNLINK, key, DEST_KEYRING) < 0) {

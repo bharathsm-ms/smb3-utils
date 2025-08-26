@@ -1445,7 +1445,7 @@ static int parse_unc(const char *unc_name, struct parsed_mount_info *parsed_info
 		return EX_USAGE;
 	}
 
-	/* copy pieces into their resepective buffers */
+	/* copy pieces into their respective buffers */
 	memcpy(parsed_info->host, host, hostlen);
 	memcpy(parsed_info->share, share, sharelen);
 	memcpy(parsed_info->prefix, prepath, prepathlen);
@@ -2006,7 +2006,7 @@ assemble_mountinfo(struct parsed_mount_info *parsed_info,
 		/*
 		 * Note that the password will not be retrieved from the
 		 * USER env variable (ie user%password form) as there is
-		 * already a PASSWD environment varaible
+		 * already a PASSWD environment variable
 		 */
 		if (getenv("USER"))
 			strlcpy(parsed_info->username, getenv("USER"),
@@ -2272,7 +2272,7 @@ assemble_retry:
 	 * mount.cifs does privilege separation. Most of the code to handle
 	 * assembling the mount info is done in a child process that drops
 	 * privileges. The info is assembled in parsed_info which is a
-	 * shared, mmaped memory segment. The parent waits for the child to
+	 * shared, mmapped memory segment. The parent waits for the child to
 	 * exit and checks the return code. If it's anything but "0", then
 	 * the process exits without attempting anything further.
 	 */
