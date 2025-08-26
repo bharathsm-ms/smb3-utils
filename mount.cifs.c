@@ -362,7 +362,7 @@ set_password(struct parsed_mount_info *parsed_info, const char *src,
 	if (is_pass2)
 		parsed_info->got_password2 = 1;
 	else
-	parsed_info->got_password = 1;
+		parsed_info->got_password = 1;
 	return 0;
 }
 
