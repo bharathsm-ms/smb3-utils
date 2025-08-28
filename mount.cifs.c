@@ -1582,7 +1582,7 @@ add_mtab(char *devname, char *mountpoint, unsigned long flags, const char *fstyp
 	 * users from sending signals to this process, though ^c on controlling
 	 * terminal should still work.
 	 */
-	rc = setreuid(geteuid(), -1);
+	rc = setreuid(geteuid(), (uid_t)-1);
 	if (rc != 0) {
 		fprintf(stderr, "Unable to set real uid to effective uid: %s\n",
 				strerror(errno));
