@@ -76,7 +76,7 @@
 #define MS_USERS	0x40000000
 #define MS_USER		0x80000000
 
-#define MAX_UNC_LEN 1024
+#define MAX_UNC_LEN 1024U
 
 /* I believe that the kernel limits options data to a page */
 #define MAX_OPTIONS_LEN	4096
@@ -1388,11 +1388,11 @@ nocopy:
 
 static int parse_unc(const char *unc_name, struct parsed_mount_info *parsed_info, const char *progname)
 {
-	int length = strnlen(unc_name, MAX_UNC_LEN);
+	size_t length = strnlen(unc_name, MAX_UNC_LEN);
 	const char *host, *share, *prepath;
 	size_t hostlen, sharelen, prepathlen;
 
-	if (length > (MAX_UNC_LEN - 1)) {
+	if (length >= MAX_UNC_LEN) {
 		fprintf(stderr, "mount error: UNC name too long\n");
 		return EX_USAGE;
 	}
