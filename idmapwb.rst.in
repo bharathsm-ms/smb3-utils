@@ -11,7 +11,7 @@ winbind ID mapping plugin for cifs-utils
 DESCRIPTION
 ***********
 
-This plugin allows the utilities in cifs-utils to work in conjuction with
+This plugin allows the utilities in cifs-utils to work in conjunction with
 the winbind facility of Samba suite. It handles several functions including
 mapping UID and GID to SIDs and vice versa.
 

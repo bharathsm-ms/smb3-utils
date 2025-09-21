@@ -214,7 +214,7 @@ uint16_t get_acl_revision(const struct cifs_ntsd *pntsd, ace_kinds ace_kind) {
 /*
  * The actual changes to the ACL specified in ace_kind are performed by the
  * caller of this function; this function copies/backfills the remaining
- * relevant compoenents of the security descriptor that remain unchanged.
+ * relevant components of the security descriptor that remain unchanged.
  */
 static ssize_t
 copy_sec_desc(const struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
@@ -239,7 +239,7 @@ copy_sec_desc(const struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 	pnntsd->dacloffset = pntsd->dacloffset;
 	bufsize = size;
 
-	/* owner and group SIDs in the original defscriptor */
+	/* owner and group SIDs in the original descriptor */
 	owner_sid_ptr = (struct cifs_sid *)((char *)pntsd + osidsoffset);
 	group_sid_ptr = (struct cifs_sid *)((char *)pntsd + gsidsoffset);
 
@@ -324,7 +324,7 @@ copy_sec_desc_with_sid(const struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 	dacloffset = le32toh(pntsd->dacloffset);
 	/*
 	 * the size of the owner or group sid might be different from the old
-	 * one, so the group sid offest might change, and if the owner is
+	 * one, so the group sid offset might change, and if the owner is
 	 * positioned before the DACL, the dacl offset might change as well;
 	 * note however, that the owner sid offset does not change
 	 */
@@ -449,7 +449,7 @@ compare_aces(struct cifs_ace *sace, struct cifs_ace *dace, int compflags)
  * This is somewhat suboptimal, but to keep the code simple, we will still
  * allocate the ACL control headers for DACL and SACL even thought there is
  * no corresponding ACL (dacloffset = 0 or sacloffset = 0).
- * When seetting DACL, we allocate sufficient space for the descriptor control
+ * When setting DACL, we allocate sufficient space for the descriptor control
  * structure, owner and group sids, and the DACL (ACL control structure and
  * the aces).
  * When setting SACL, we allocate sufficient space to copy the above components

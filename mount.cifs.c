@@ -76,7 +76,7 @@
 #define MS_USERS	0x40000000
 #define MS_USER		0x80000000
 
-#define MAX_UNC_LEN 1024
+#define MAX_UNC_LEN 1024U
 
 /* I believe that the kernel limits options data to a page */
 #define MAX_OPTIONS_LEN	4096
@@ -362,7 +362,7 @@ set_password(struct parsed_mount_info *parsed_info, const char *src,
 	if (is_pass2)
 		parsed_info->got_password2 = 1;
 	else
-	parsed_info->got_password = 1;
+		parsed_info->got_password = 1;
 	return 0;
 }
 
@@ -1388,11 +1388,11 @@ nocopy:
 
 static int parse_unc(const char *unc_name, struct parsed_mount_info *parsed_info, const char *progname)
 {
-	int length = strnlen(unc_name, MAX_UNC_LEN);
+	size_t length = strnlen(unc_name, MAX_UNC_LEN);
 	const char *host, *share, *prepath;
 	size_t hostlen, sharelen, prepathlen;
 
-	if (length > (MAX_UNC_LEN - 1)) {
+	if (length >= MAX_UNC_LEN) {
 		fprintf(stderr, "mount error: UNC name too long\n");
 		return EX_USAGE;
 	}
@@ -1445,7 +1445,7 @@ static int parse_unc(const char *unc_name, struct parsed_mount_info *parsed_info
 		return EX_USAGE;
 	}
 
-	/* copy pieces into their resepective buffers */
+	/* copy pieces into their respective buffers */
 	memcpy(parsed_info->host, host, hostlen);
 	memcpy(parsed_info->share, share, sharelen);
 	memcpy(parsed_info->prefix, prepath, prepathlen);
@@ -1582,7 +1582,7 @@ add_mtab(char *devname, char *mountpoint, unsigned long flags, const char *fstyp
 	 * users from sending signals to this process, though ^c on controlling
 	 * terminal should still work.
 	 */
-	rc = setreuid(geteuid(), -1);
+	rc = setreuid(geteuid(), (uid_t)-1);
 	if (rc != 0) {
 		fprintf(stderr, "Unable to set real uid to effective uid: %s\n",
 				strerror(errno));
@@ -2006,7 +2006,7 @@ assemble_mountinfo(struct parsed_mount_info *parsed_info,
 		/*
 		 * Note that the password will not be retrieved from the
 		 * USER env variable (ie user%password form) as there is
-		 * already a PASSWD environment varaible
+		 * already a PASSWD environment variable
 		 */
 		if (getenv("USER"))
 			strlcpy(parsed_info->username, getenv("USER"),
@@ -2272,7 +2272,7 @@ assemble_retry:
 	 * mount.cifs does privilege separation. Most of the code to handle
 	 * assembling the mount info is done in a child process that drops
 	 * privileges. The info is assembled in parsed_info which is a
-	 * shared, mmaped memory segment. The parent waits for the child to
+	 * shared, mmapped memory segment. The parent waits for the child to
 	 * exit and checks the return code. If it's anything but "0", then
 	 * the process exits without attempting anything further.
 	 */

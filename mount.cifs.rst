@@ -457,7 +457,7 @@ locallease
   Check cached leases locally instead of querying the server.
 
 nolease
-  Do not request lease/oplock when openning a file on the server. This turns
+  Do not request lease/oplock when opening a file on the server. This turns
   off local caching of IO, byte-range lock and read metadata operations
   (see ``actimeo`` for more details about metadata caching). Requires SMB2
   and above (see ``vers``).
@@ -664,7 +664,7 @@ multichannel
 max_channels=arg
   This option is applicable while using ``multichannel`` feature. max_channels
   option allows the user to specify the number of transport connections that
-  should be establised between client and server up to a limit of 16. Using
+  should be established between client and server up to a limit of 16. Using
   this option implicitly enables the ``multichannel`` feature.
   If max_channels option not specified, ``multichannel`` feature defaults to
   using 2 connections.

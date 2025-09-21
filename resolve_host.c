@@ -37,7 +37,8 @@
 /*
  * resolve hostname to comma-separated list of address(es)
  */
-int resolve_host(const char *host, char *addrstr) {
+int resolve_host(const char *host, char *addrstr)
+{
 	int rc;
 	/* 10 for max width of decimal scopeid */
 	char tmpbuf[NI_MAXHOST + 1 + 10 + 1];
@@ -148,7 +149,7 @@ int resolve_host(const char *host, char *addrstr) {
 
 		char site_name[MAXCDNAME];
 		site_name[0] = '\0';
-		// We assume that AD always sends the ip addresses in the addtional data block
+		// We assume that AD always sends the ip addresses in the additional data block
 		for (int i = 0; i < ns_msg_count(global_domain_handle, ns_s_ar); i++) {
 			ns_rr rr;
 			res = ns_parserr(&global_domain_handle, ns_s_ar, i, &rr);

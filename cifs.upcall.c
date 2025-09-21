@@ -5,7 +5,7 @@
 *
 * Used by /sbin/request-key for handling
 * cifs upcall for kerberos authorization of access to share and
-* cifs upcall for DFS srver name resolving (IPv4/IPv6 aware).
+* cifs upcall for DFS server name resolving (IPv4/IPv6 aware).
 * You should have keyutils installed and add something like the
 * following lines to /etc/request-key.conf file:
 
@@ -923,7 +923,7 @@ out:
 /*
  * Prepares AP-REQ data for mechToken and gets session key
  * Uses credentials from cache. It will not ask for password
- * you should receive credentials for yuor name manually using
+ * you should receive credentials for your name manually using
  * kinit or whatever you wish.
  *
  * in:
@@ -1261,7 +1261,7 @@ static int cifs_resolver(const key_serial_t key, const char *key_descr,
 		return 1;
 	}
 
-	/* conver ip to string form */
+	/* convert ip to string form */
 	if (addr->ai_family == AF_INET)
 		p = &(((struct sockaddr_in *)addr->ai_addr)->sin_addr);
 	else

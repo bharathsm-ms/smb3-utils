@@ -92,7 +92,7 @@ AC_PROG_CC
 AC_USE_SYSTEM_EXTENSIONS
 AM_PROG_CC_C_O
 
-# AC_PROG_SED is only avaliable in recent autoconf versions.
+# AC_PROG_SED is only available in recent autoconf versions.
 # Use AC_CHECK_PROG instead if AC_PROG_SED is not present.
 ifdef([AC_PROG_SED],
       [AC_PROG_SED],

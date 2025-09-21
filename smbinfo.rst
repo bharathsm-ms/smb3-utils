@@ -21,7 +21,7 @@ This tool is part of the cifs-utils suite.
 
 `smbinfo` is a userspace helper program for the Linux SMB
 client file system (CIFS). It is intended to display SMB-specific file
-informations such as Security Descriptors and Quota.
+information such as Security Descriptors and Quota.
 
 This tool works by making an CIFS_QUERY_INFO IOCTL call to the Linux
 SMB client which in turn issues a SMB Query Info request and returns
@@ -93,7 +93,7 @@ COMMAND
 - File flags
 
 `keys`: Dump session id, encryption keys and decryption keys so that
-the SMB3 traffic of this mount can be decryped e.g. via wireshark
+the SMB3 traffic of this mount can be decrypted e.g. via Wireshark
 (requires root).
 
 `gettconinfo`: Prints both the TCON Id and Session Id for a cifs file.

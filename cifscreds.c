@@ -211,7 +211,7 @@ static int cifscreds_add(struct cmdarg *arg)
 
 	/*
 	 * if there isn't same credentials stashed add them to keyring
-	 * and set permisson mask
+	* and set permission mask
 	 */
 	pass = getpass("Password: ");
 
@@ -227,7 +227,7 @@ static int cifscreds_add(struct cmdarg *arg)
 				currentaddress, strerror(errno));
 		} else {
 			if (keyctl(KEYCTL_SETPERM, key, CIFS_KEY_PERMS) < 0) {
-				fprintf(stderr, "error: Setting permissons "
+				fprintf(stderr, "error: Setting permissions "
 					"on key, attempt to delete...\n");
 
 				if (keyctl(KEYCTL_UNLINK, key, DEST_KEYRING) < 0) {
